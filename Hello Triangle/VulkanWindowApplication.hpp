@@ -1,10 +1,12 @@
 #pragma once
+#define GLFW_INCLUDE_VULKAN // force GLFW to include vulkan header
 #include <GLFW/glfw3.h>
+#include <vector>
 
 constexpr int WIDTH = 800;
 constexpr int HEIGHT = 600;
 
-class HelloTriangleApplication {
+class VulkanWindowApplication {
 public:
 	void Run();
 private:
@@ -16,6 +18,10 @@ private:
 	 * Initialize the Vulkan instance and associated resources
 	 */
 	void InitVulkan();
+	/*
+	 * Create the Vulkan instance
+	 */
+	void CreateVulkanInstance();
 	/**
 	 * Run the main game loop
 	 * Render frames
@@ -27,6 +33,10 @@ private:
 	 */
 	void Cleanup();
 
+	std::vector<VkExtensionProperties> GetSupportedExtensions();
+
 	// Window pointer
-	GLFWwindow* window;
+	GLFWwindow* GlfwWindow;
+	// Vulkan Instance
+	VkInstance VInstance;
 };

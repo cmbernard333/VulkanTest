@@ -1,11 +1,11 @@
-#include "HelloTriangleApplication.hpp"
+#include "VulkanWindowApplication.hpp"
 
 #include <iostream>
 #include <stdexcept>
 
 int main(int argc, char** argv)
 {
-	HelloTriangleApplication App;
+	VulkanWindowApplication App;
 
 	try {
 		App.Run();
