@@ -98,6 +98,12 @@ std::vector<VkExtensionProperties> VulkanWindowApplication::GetSupportedExtensio
 {
 	uint32_t ExtensionCount = 0;
 	std::vector<VkExtensionProperties> SupportedExtensions;
+	// get count - jave to reserve space in the vector in order to get it to write correctly
+	vkEnumerateInstanceExtensionProperties(nullptr, &ExtensionCount, nullptr);
+	// creates enough space for the default state of VkExtensionProperties struct
+	SupportedExtensions.resize(ExtensionCount);
+	// get count and record in array
 	vkEnumerateInstanceExtensionProperties(nullptr, &ExtensionCount, SupportedExtensions.data());
+	std::cout << "Enumerated " << SupportedExtensions.size() << " extensions." << std::endl;
 	return SupportedExtensions;
 }
